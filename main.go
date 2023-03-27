@@ -88,3 +88,9 @@ func main() {
 		printUsage()
 	}
 }
+
+
+// Imprimir el uso del programa
+func printUsage() {
+	fmt.Println("Uso: todo [list|add|complete|delete]")
+}
