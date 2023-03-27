@@ -12,6 +12,7 @@ import (
 	task "github.com/danielaltamirano1993/go-crud-cli/tasks"
 )
 
+
 func main() {
 	// read or create the tasks.json file
 	file, err := os.OpenFile("tasks.json", os.O_RDWR|os.O_CREATE, 0666)
