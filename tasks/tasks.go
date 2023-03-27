@@ -30,3 +30,13 @@ func ListTasks(tasks []Task) {
 }
 
 // add a new task to the array
+func AddTask(tasks []Task, name string) []Task {
+	newTask := Task{
+		ID:       GetNextID(tasks),
+		Name:     name,
+		Complete: false,
+	}
+	return append(tasks, newTask)
+}
+
+// search task with id and mark as completed
