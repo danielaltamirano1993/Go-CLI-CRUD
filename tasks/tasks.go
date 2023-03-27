@@ -12,3 +12,19 @@ type Task struct {
 	Name     string `json:"name"`
 	Complete bool   `json:"complete"`
 }
+
+// list all tasks from the array with an icon
+func ListTasks(tasks []Task) {
+	if len(tasks) == 0 {
+		fmt.Println("No hay tareas.")
+		return
+	}
+
+	for _, task := range tasks {
+		status := " "
+		if task.Complete {
+			status = "✓"
+		}
+		fmt.Printf("[%s] %d: %s\n", status, task.ID, task.Name)
+	}
+}
