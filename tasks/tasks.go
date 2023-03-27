@@ -28,3 +28,5 @@ func ListTasks(tasks []Task) {
 		fmt.Printf("[%s] %d: %s\n", status, task.ID, task.Name)
 	}
 }
+
+// add a new task to the array
