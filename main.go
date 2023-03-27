@@ -48,3 +48,43 @@ func main() {
 		printUsage()
 		return
 	}
+	
+	switch os.Args[1] {
+	case "list":
+		task.ListTasks(tasks)
+	case "add":
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Println("Nombre de la tarea:")
+		name, _ := reader.ReadString('\n')
+		name = strings.TrimSpace(name)
+
+		tasks = task.AddTask(tasks, name)
+		task.SaveTasks(file, tasks)
+	case "complete":
+		if len(os.Args) < 3 {
+			fmt.Println("Debe proporcionar el ID de la tarea que se completará.")
+			return
+		}
+		id, err := strconv.Atoi(os.Args[2])
+		if err != nil {
+			fmt.Println("El ID debe ser un número entero.")
+			return
+		}
+		tasks = task.CompleteTask(tasks, id)
+		task.SaveTasks(file, tasks)
+	case "delete":
+		if len(os.Args) < 3 {
+			fmt.Println("Debe proporcionar el ID de la tarea que se eliminará.")
+			return
+		}
+		id, err := strconv.Atoi(os.Args[2])
+		if err != nil {
+			fmt.Println("El ID debe ser un número entero.")
+			return
+		}
+		tasks = task.DeleteTask(tasks, id)
+		task.SaveTasks(file, tasks)
+	default:
+		printUsage()
+	}
+}
