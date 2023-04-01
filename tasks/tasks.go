@@ -40,3 +40,14 @@ func AddTask(tasks []Task, name string) []Task {
 }
 
 // search task with id and mark as completed
+func CompleteTask(tasks []Task, id int) []Task {
+	for i, task := range tasks {
+		if task.ID == id {
+			tasks[i].Complete = true
+			break
+		}
+	}
+	return tasks
+}
+
+// Delete a task with an id
