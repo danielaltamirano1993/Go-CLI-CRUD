@@ -51,3 +51,11 @@ func CompleteTask(tasks []Task, id int) []Task {
 }
 
 // Delete a task with an id
+func DeleteTask(tasks []Task, id int) []Task {
+	for i, task := range tasks {
+		if task.ID == id {
+			return append(tasks[:i], tasks[i+1:]...)
+		}
+	}
+	return tasks
+}
